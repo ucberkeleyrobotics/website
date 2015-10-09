@@ -1,0 +1,21 @@
+{% extends "default.html" %}
+{% block head %}{% endblock %}
+{% block title %}New Projects{% endblock %}
+{% block content %}
+        <script>
+            document.body.style.backgroundImage = "url('/static/img/i-robot.jpg')";
+        </script>
+        <center>
+            <div class="container" style="height:100px">
+            </div>
+            <div class="container">
+                <div class="jumbotron vertical-center">
+                    <h1>More Robotics at Cal.</h1>
+                    <h2>Please click below to see other Robotics Resources here.</h2>
+                    <br>
+                    <button onclick="window.location='/related/clubs/'" type="button" class="btn btn-lg btn-default">Clubs</button>
+                    <button onclick="window.location='/related/labs/'" type="button" class="btn btn-lg btn-primary">Labs</button>
+                </div>      
+            </div>
+        </center>
+{% endblock %}

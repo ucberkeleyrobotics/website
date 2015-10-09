@@ -41,29 +41,27 @@
 
             <div class="container">
              <!-- <div style="width:200px; height:50px;"></div> -->
-            
             <div id="wrapper">
 
-                    <!-- Sidebar -->
-                    <div id="sidebar-wrapper">
-                        <ul class="sidebar-nav">
-                            <li class="sidebar-brand">
-                                <a href="/projects">Our Projects</a>
-                            </li>
-                            <li>
-                                <a href="/projects/new_project">Start a New Project!</a>
-                            </li>
-                            <li>
-                                <a href="/projects/rascal">RASCal</a>
-                            </li>
-                            <li>
-                                <a href="/projects/golf_cart">Autonomous Golf Cart</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /#sidebar-wrapper -->
-
-                    {% block content %}{% endblock %}
+                <!-- Sidebar -->
+                <div id="sidebar-wrapper">
+                    <ul class="sidebar-nav">
+                        <li class="sidebar-brand">
+                            <a href="/related/clubs/">Robotics Clubs at Cal</a>
+                        </li>
+                <li>
+                            <a href="/related/clubs/PiE">Pioneers in Engineering</a>
+                        </li>
+                        <li>
+                    <a href="/related/clubs/VR">Virtual Reality at Berkeley</a>
+                </li> 
+                <li>
+                            <a href="/related/clubs/micromouse">IEEE Micromouse</a>
+                        </li> 
+                    </ul>
+                </div>
+                <!-- /#sidebar-wrapper -->
+                {% block content %}{% endblock %}
 
             </div>
             
