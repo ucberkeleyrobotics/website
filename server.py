@@ -23,6 +23,9 @@ def join():
 def projects():
 	return render_template("/projects/index.html")
 
+@app.route('/form')
+def form():
+	return render_template("form.html")
 @app.route('/related/')
 def related():
 	return render_template("/related/index.html")
