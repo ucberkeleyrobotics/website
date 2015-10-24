@@ -48,4 +48,5 @@ def clubs():
 def two_folder(club_or_lab, filename):
 	return render_template("/related/" + club_or_lab + "/" + filename + ".html")
 
-app.run(debug = True)
+if __name__ == '__main__':
+    app.run(debug = True)
