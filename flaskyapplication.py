@@ -44,9 +44,13 @@ def labs():
 def clubs():
 	return render_template("/related/clubs/index.html")
 
-@app.route('/related/<club_or_lab>/<filename>')
-def two_folder(club_or_lab, filename):
-	return render_template("/related/" + club_or_lab + "/" + filename + ".html")
+@app.route('/related/spaces/')
+def spaces():
+	return render_template("/related/spaces/index.html")
+
+@app.route('/related/<clublabspace>/<filename>')
+def two_folder(clublabspace, filename):
+	return render_template("/related/" + clublabspace + "/" + filename + ".html")
 
 if __name__ == '__main__':
     app.run(debug = True)
