@@ -40,6 +40,12 @@ def form_redir():
 def form():
 	return render_template("form.html")
 
+@app.route('/shirts')
+def shirts_redir():
+    return redirect('/shirts/')
+@app.route('/shirts/')
+def shirts():
+	return render_template("shirts.html")
 
 
 @app.route('/projects/')
