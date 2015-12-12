@@ -18,7 +18,7 @@ def calendar():
 @app.route('/join')
 def join():
 	return render_template("join.html")
-
+	
 @app.route('/projects/')
 def projects():
 	return render_template("/projects/index.html")
