@@ -1,25 +1,47 @@
-{% extends "home-default.html" %}
+{% extends "default.html" %}
 {% block head %}{% endblock %}
-{% block title %}Home{% endblock %}
+{% block title %}About{% endblock %}
 {% block content %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+  <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <iframe width="100%" height="400"
+src="http://www.youtube.com/embed/6aVFbciIh7A?autoplay=1">
+</iframe>
+        </div>
+      <div class="row">
+    </div>
+    <br>
+    
+    <div class="container">
+      <h4>The mission of Robotics at Berkeley is to create and maintain a financial, social, and informational hub for undergraduate roboticists at UC Berkeley by:</h4>
+      <center>
+        <div class="row">
+          <div id="main_info" class="col-md-4">
+            <h2>Projects</h2>
+            <p>Providing monetary, informational, and administrative support for students’ robotics-related projects and competition teams</p>
+            <p><a class="btn btn-primary" href="/projects/" role="button">View details &raquo;</a></p>
+          </div>
+          <div id="main_info" class="col-md-4">
+            <h2>Related Groups</h2>
+            <p>Collecting and publicizing information about and opportunities in UC Berkeley’s robotics-related student groups and research labs</p>
+            <p><a class="btn btn-primary" href="/related/" role="button">View details &raquo;</a></p>
+         </div>
+          <div id="main_info" class="col-md-4">
+            <h2>Events</h2>
+            <p>Organizing socially and intellectually engaging events for roboticists of all ages, majors, and interests.</p>
+            <p><a class="btn btn-primary" href="/calendar/" role="button">View details &raquo;</a></p>
+          </div>
+        </center>
+      </div>
+      <br>
 
-<div style="width:200px; height:50px;"></div> 
-<div class="container-fluid"><div class="row">
-	<div class="jumbotron">	
-		<!-- <div class="col-sm-9"> -->
-			<h3>Welcome to the <b>Robotics at Berkeley</b> website!</h3>
-			<p>We are a student group at UC Berkeley that lowers the barriers to being involved in robotics at Cal by doing the following things:</p>
-			<p>   1. Supporting students' competitive and recreational robotics projects</p>
-			<p>   2. Increasing awareness and accessibility of all robotics-related groups at Cal</p>
-			<p>   3. Organizing social and intellectual events focused on robotics</p>
-			<p>Please fill out <a href="/form">this form</a> if you would like to join our mailing list.</p>
-		<!-- </div>
-		<div class="col-sm-3"> -->
-		<!-- </div> -->
-		<script>
-			document.body.style.backgroundImage = "url('static/img/battlebot.jpg')";
-			document.body.style.backgroundRepeat = "no-repeat";
-		</script>
-	</div>
-</div><!-- /.blurb -->
+      <p>Please fill out <a href="/form/">this form</a> if you would like to join our mailing list.</p>
+
+      <hr>
+    </div> <!-- /container -->
 {% endblock %}
+
+

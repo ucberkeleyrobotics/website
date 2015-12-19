@@ -8,11 +8,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 			<link type="text/css" href="/static/css/sticky-footer-navbar.css" rel="stylesheet">
 			<link type="text/css" href="/static/css/simple-sidebar.css" rel="stylesheet">
+            <link type="text/css" href="/static/css/scaling-background.css" rel="stylesheet">
 			 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 			 <style>
 			 	h1{font-size: 42px;}
 			 	h3{font-size: 27px;}
 			 	p{font-size:17px;}
+			 	#main_info{
+
+			 		border: 1px solid black;
+			 	}
 			 </style>
 		</head>
 		<body>
@@ -29,11 +34,11 @@
 			    </div>
 			    <div class="collapse navbar-collapse" id="myNavbar">
 			      <ul class="nav navbar-nav">
-			        <li><a href="/about">About</a></li>
-			        <li><a href="/join">Join</a></li>
-			        <li><a href="/calendar">Calendar</a></li>
-			        <li><a href="/projects">Projects</a></li>
-			        <li><a href="/related">Also at Cal</a></li>
+			        <li><a href="/about/">About</a></li>
+			        <li><a href="/join/">Join</a></li>
+			        <li><a href="/calendar/">Calendar</a></li>
+			        <li><a href="/projects/">Projects</a></li>
+			        <li><a href="/related/">Also at Cal</a></li>
 			      </ul>
 			    </div>
 			  </div>
@@ -47,7 +52,7 @@
 			<div class="footer navbar-fixed-bottom">
 		      <div class="container">
 		      	<br>
-	        		<p style="font-size: 15px; color: #989898;">© 2015 Cal Robotics. Please email leadership@rab.berkeley.edu for general inquiries. </p>
+	        		<p style="font-size: 15px; color: #989898;">© 2015 Robotics@Berkeley. Please email leadership@rab.berkeley.edu for general inquiries. </p>
 					
 					<p style = "font-size: 10px; color: #989898;">
 					We are a student group acting independently of the University of California. We take full responsibility for our organization and this web site.
@@ -55,5 +60,8 @@
 					
 		      </div>
 	    	</div>
+            <div id="bg">
+                <img src={% block bg_url %}{% endblock %} alt="">
+            </div>
 		</body>
 	</html>
