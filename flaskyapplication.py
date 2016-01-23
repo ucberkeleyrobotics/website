@@ -32,6 +32,10 @@ def join_redir():
 @app.route('/join/')
 def join():
 	return render_template("join.html")
+	
+def projects():
+	return render_template("/projects/index.html")
+
 
 @app.route('/form')
 def form_redir():
