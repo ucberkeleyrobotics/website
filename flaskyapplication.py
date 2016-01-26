@@ -84,6 +84,11 @@ def clubs_redir():
 def clubs():
 	return render_template("/related/clubs/index.html")
 
+@app.route('/byra/')
+@app.route('/BYRA/')
+def byra():
+	return render_template("/BYRA/index.html")
+
 @app.route('/related/spaces')
 def spaces_redir():
     return redirect('/related/spaces/')
