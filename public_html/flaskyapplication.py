@@ -44,6 +44,13 @@ def form_redir():
 def form():
 	return render_template("form.html")
 
+@app.route('/sponsorships')
+def sponsorship_redir():
+	return redirect('/sponsorships/')
+@app.route('/sponsorships/')
+def sponsorships():
+	return render_template("sponsorships.html")
+
 @app.route('/shirts')
 def shirts_redir():
     return redirect('/shirts/')
