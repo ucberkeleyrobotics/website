@@ -20,6 +20,6 @@ That's it!
 
 Troubleshooting:
 A collection of notes on dealing with the server
-- Deleting files doesn't really work. After deletion they show up again sometimes. Overwriting files does work though, which is why just copying everything in every time is a good idea.
+- Sometimes if someone does something wrong it screws up the symlinks. When this happens, the website will stop updating as expected. This is because the actual website is hosted from /services/http/users/r/robotics on the OCF server, not the /home/r/ro/robotics/public_html folder (aka ~/public_html) folder that things are copied into. Recreate the symlink and everything will work again.
 - After running touch on run.fcgi the updates should go live in ~30 seconds or so. If it takes more than a minute or two it's probably a problem with the update.
 - When putting links to other pages use absolute paths with a slash on the end (e.g. /projects/new_project/). Leaving off the slash ends up putting run.fcgi in the middle of the displayed url about half the time, and relative paths don't work for the most part.
