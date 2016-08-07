@@ -26,9 +26,6 @@ def calendar_redir():
 def calendar():
 	return render_template("calendar.html")
 
-@app.route('/dxm')
-def dxm_redir():
-    return redirect('/dxm/')
 @app.route('/dxm/')
 def dxm():
 	return render_template("dxm.html")
