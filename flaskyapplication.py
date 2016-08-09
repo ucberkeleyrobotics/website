@@ -20,11 +20,8 @@ def calendar():
 	return render_template("calendar.html")
 
 @app.route('/dxm')
-def dxm():
-	return render_template("dxm.html")
-
 @app.route('/DXM')
-def DXM():
+def dxm():
 	return render_template("dxm.html")
 
 @app.route('/join')
