@@ -1,5 +1,14 @@
 RewriteEngine On
 RewriteBase /
+
+
+RewriteCond %{QUERY_STRING} !(^|&)finalRedir=true($|&)
+RewriteCond %{REQUEST_URI} ^/run\.fcgi/(.*)
+RewriteRule ^ /%1 [R=301,L,QSA]
+
+RewriteCond %{QUERY_STRING} !(^|&)finalRedir=true($|&)
+RewriteCond %{REQUEST_URI} /(.*)/$
+RewriteRule ^ /%1 [R=301,L,QSA]
+
 RewriteCond %{REQUEST_FILENAME} !-f
-# Change "username" and "flasky" to your username and whatever directory name you made in public_html, respectively
-RewriteRule ^(.*)$ /run.fcgi/$1 [QSA,L]
+RewriteRule ^(.*)$ run.fcgi/$1?finalRedir=true [QSA,L]
