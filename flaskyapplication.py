@@ -24,7 +24,7 @@ def dxm():
 	return render_template("dxm.html")
 
 @app.route('/DXM')
-def dxm():
+def DXM():
 	return render_template("dxm.html")
 
 @app.route('/join')
