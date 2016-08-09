@@ -23,6 +23,10 @@ def calendar():
 def dxm():
 	return render_template("dxm.html")
 
+@app.route('/DXM')
+def dxm():
+	return render_template("dxm.html")
+
 @app.route('/join')
 def join():
 	return render_template("join.html")
