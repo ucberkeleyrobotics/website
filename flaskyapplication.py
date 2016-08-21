@@ -40,7 +40,7 @@ def l1Page(l0Page, l1Page):
                 return redirect('/' + l0Page.lower() + '/' + l1Page.lower(), code=301)
 	if l1Page in DIRECTORIES[1]:
 		return render_template('/' + l0Page + '/' + l1Page + '/index.html')
-	template = ('/' + l0Page + '/' + l1Page + '.html' if l0Page != 'static' else '')
+	template = ('/' + l0Page + '/' + l1Page + '.html')
 	if os.path.isfile('templates/' + template):
 		return render_template(template)
 	abort(404)
