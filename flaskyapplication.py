@@ -1,10 +1,6 @@
 from flask import Flask, flash, redirect, render_template, url_for, request
 from werkzeug.routing import BaseConverter
 
-#Note: not all of the redirects work, which is really freaking weird
-#Actually I'm pretty sure none of them are even doing anything
-#Oh well.
-
 DIRECTORIES = (('projects', 'related', 'byra'),
 		('labs', 'clubs', 'spaces'),
 		())
