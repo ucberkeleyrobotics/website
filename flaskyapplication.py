@@ -21,40 +21,29 @@ app.url_map.converters['regex'] = RegexConverter
 def index():
     return render_template("index.html")
 
+def create_route(dirLevel):
+        funcBuilder = (
+                '@app.route(\'/<regex(\"((?!static).)*\"):l0Page>' + ''.join(['/<l%(lvl)iPage>' % {'lvl' : i}
+                        for i in range(1, dirLevel + 1)]) + '\')\n' +
+                ('def l%iPage(' % dirLevel + ''.join(['l%(lvl)iPage, ' % {'lvl' : i}
+                        for i in range(0, dirLevel + 1)])[:-2] + '):\n') +
+                ('\tif ' + ''.join(['l%(lvl)iPage.lower() != l%(lvl)iPage or ' % {'lvl' : i}
+                        for i in range(0, dirLevel + 1)])[:-4] + ':\n') +
+                ('\t\treturn redirect(' + ''.join(['\'/\' + l%(lvl)iPage.lower() + ' % {'lvl' : i}
+                        for i in range(0, dirLevel + 1)])[:-3] + ', code=301)\n') +
+                '\tif l%(lvl)iPage in DIRECTORIES[%(lvl)i]:\n' % {'lvl' : dirLevel} +
+                ('\t\treturn render_template(' + ''.join(['\'/\' + l%(lvl)iPage + ' % {'lvl' : i}
+                        for i in range(0, dirLevel + 1)])[:-3] + ' + \'/index.html\')\n') +
+                ('\ttemplate = (' + ''.join(['\'/\' + l%(lvl)iPage + ' % {'lvl' : i}
+                        for i in range(0, dirLevel + 1)])[6:-3] + ' + \'.html\')\n') +
+                '\tif os.path.isfile(\'templates/\' + template):\n' +
+                '\t\treturn render_template(template)\n' +
+                '\tabort(404)\n'
+                )
+        return funcBuilder
 
-
-@app.route('/<regex("((?!static).)*"):l0Page>')
-def l0Page(l0Page):
-	if l0Page.lower() != l0Page:
-		return redirect('/' + l0Page.lower(), code=301)
-	if l0Page in DIRECTORIES[0]:
-		return render_template('/' + l0Page + '/index.html') 
-	template = (l0Page + '.html')
-	if os.path.isfile('templates/' + template):
-		return render_template(template)
-	abort(404)
-
-@app.route('/<regex("((?!static).)*"):l0Page>/<l1Page>')
-def l1Page(l0Page, l1Page):
-        if l0Page.lower() != l0Page or l1Page.lower() != l1Page:
-                return redirect('/' + l0Page.lower() + '/' + l1Page.lower(), code=301)
-	if l1Page in DIRECTORIES[1]:
-		return render_template('/' + l0Page + '/' + l1Page + '/index.html')
-	template = ('/' + l0Page + '/' + l1Page + '.html')
-	if os.path.isfile('templates/' + template):
-		return render_template(template)
-	abort(404)
-
-@app.route('/<regex("((?!static).)*"):l0Page>/<l1Page>/<l2Page>')
-def l2Page(l0Page, l1Page, l2Page):
-        if l0Page.lower() != l0Page or l1Page.lower() != l1Page or l2Page.lower() != l2Page:
-                return redirect('/' + l0Page.lower() + '/' + l1Page.lower() + '/' + l2Page.lower(), code=301)
-	if l2Page in DIRECTORIES[2]:
-                return render_template('/' + l0Page + '/' + l1Page + '/' + l2Page +  '/index.html')
-        template = ('/' + l0Page + '/' + l1Page + '/' + l2Page + '.html')
-	if os.path.isfile('templates/' + template):
-		return render_template(template)
-	abort(404)
+for i in range(0, len(DIRECTORIES)):
+        exec(create_route(i), globals(), globals())
 
 if __name__ == '__main__':
     app.run(debug = True)
