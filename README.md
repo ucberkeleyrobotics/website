@@ -27,3 +27,9 @@ A collection of notes on dealing with the server
 
 2016/08/04 update:
 A git repo has been created on the server. Now to update the website, just ssh into the server, cd into public_html, then run git pull and you're good! Not sure why I didn't set it up this way to begin with....
+
+2016/08/21 update:
+A dynamic page loader has been created! Now, new pages will no longer require changes to flasklyapplication.py as long as
+- The file and directory names are in lowercase
+- The directory names aren't repeated within the same level (example: having both /templates/foo/bar/ and /templates/foobar/bar/ would be bad. In general just don't repeate directory names, it makes things easier)
+- Templates are named the same thing as the directory (example: the template for clubs is /templates/related/clubs/clubs.html)
