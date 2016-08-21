@@ -22,7 +22,7 @@ def index():
 
 
 
-@app.route('/<regex("((?!static)(?!default).)*"):l0Page>')
+@app.route('/<regex("((?!static)*"):l0Page>')
 def l0Page(l0Page):
 	if l0Page.lower() != l0Page:
 		return redirect('/' + l0Page.lower(), code=301)
@@ -30,7 +30,7 @@ def l0Page(l0Page):
 		return render_template('/' + l0Page + '/index.html') 
 	return render_template(l0Page + '.html')
 
-@app.route('/<regex("((?!static).)*"):l0Page>/<l1Page>')
+@app.route('/<regex("((?!static)*"):l0Page>/<l1Page>')
 def l1Page(l0Page, l1Page):
         if l0Page.lower() != l0Page or l1Page.lower() != l1Page:
                 return redirect('/' + l0Page.lower() + '/' + l1Page.lower(), code=301)
@@ -38,7 +38,7 @@ def l1Page(l0Page, l1Page):
 		return render_template('/' + l0Page + '/' + l1Page + '/index.html')
 	return render_template('/' + l0Page + '/' + l1Page + '.html' if l0Page != 'static' else '')
 
-@app.route('/<regex("((?!static).)*"):l0Page>/<l1Page>/<l2Page>')
+@app.route('/<regex("((?!static)*"):l0Page>/<l1Page>/<l2Page>')
 def l2Page(l0Page, l1Page, l2Page):
         if l0Page.lower() != l0Page or l1Page.lower() != l1Page or l2Page.lower() != l2Page:
                 return redirect('/' + l0Page.lower() + '/' + l1Page.lower() + '/' + l2Page.lower(), code=301)
