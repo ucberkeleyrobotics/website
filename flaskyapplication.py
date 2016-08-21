@@ -26,7 +26,7 @@ def index():
 
 
 
-@app.route('/<regex("((?!static).)*"):l0Page>')
+@app.route('/<regex("((?!static)(?!default).)*"):l0Page>')
 def l0Page(l0Page):
 	if l0Page.lower() != l0Page:
 		return redirect('/' + l0Page.lower(), code=301)
