@@ -5,7 +5,7 @@ from werkzeug.routing import BaseConverter
 #Actually I'm pretty sure none of them are even doing anything
 #Oh well.
 
-DIRECTORIES = (('projects', 'related'),
+DIRECTORIES = (('projects', 'related', 'byra'),
 		('labs', 'clubs', 'spaces'),
 		())
 
