@@ -2,10 +2,16 @@ from flask import Flask, flash, redirect, render_template, url_for, request, abo
 from werkzeug.routing import BaseConverter
 import os
 
-DIRECTORIES = (('projects', 'related', 'byra'),
-		('labs', 'clubs', 'spaces'),
-		())
+def get_dirs():
+        dirs = [[]]
+        for root in os.walk('templates'):
+                level = root[0].count('/')
+                while level + 1 > len(dirs):
+                        dirs = dirs + [[]]
+                dirs[level] += root[1]
+        return tuple(dirs)
 
+DIRECTORIES = get_dirs()
 
 app = Flask(__name__)
 
