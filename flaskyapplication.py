@@ -1,78 +1,54 @@
 from flask import Flask, flash, redirect, render_template, url_for, request
+from werkzeug.routing import BaseConverter
 
 #Note: not all of the redirects work, which is really freaking weird
 #Actually I'm pretty sure none of them are even doing anything
 #Oh well.
 
+DIRECTORIES = (('projects', 'related'),
+		('labs', 'clubs', 'spaces'),
+		())
+
+
 app = Flask(__name__)
 
+class RegexConverter(BaseConverter):
+    def __init__(self, url_map, *items):
+        super(RegexConverter, self).__init__(url_map)
+        self.regex = items[0]
+
+app.url_map.converters['regex'] = RegexConverter
+
+
 @app.route('/')
-@app.route('/index')
 def index():
     return render_template("index.html")
 
-@app.route('/about')
-def about():
-	return render_template("about.html")
-
-@app.route('/calendar')
-def calendar():
-	return render_template("calendar.html")
-
-@app.route('/dxm')
-@app.route('/DXM')
-def dxm():
-	return render_template("dxm.html")
-
-@app.route('/join')
-def join():
-	return render_template("join.html")
-
-@app.route('/form')
-def form():
-	return render_template("form.html")
-
-@app.route('/sponsorships')
-def sponsorships():
-	return render_template("sponsorships.html")
-
-@app.route('/shirts')
-def shirts():
-	return render_template("shirts.html")
 
 
-@app.route('/projects')
-def projects():
-	return render_template("/projects/index.html")
+@app.route('/<regex("((?!static).)*"):l0Page>')
+def l0Page(l0Page):
+	if l0Page.lower() != l0Page:
+		return redirect('/' + l0Page.lower(), code=301)
+	if l0Page.lower() in DIRECTORIES[0]:
+		return render_template('/' + l0Page + '/index.html') 
+	return render_template(l0Page + '.html')
 
-@app.route('/projects/<filename>')
-def in_projects(filename):
-	return render_template("/projects/" + filename + ".html")
+@app.route('/<regex("((?!static).)*"):l0Page>/<l1Page>')
+def l1Page(l0Page, l1Page):
+        if l0Page.lower() != l0Page or l1Page.lower() != l1Page:
+                return redirect('/' + l0Page.lower() + '/' + l1Page.lower(), code=301)
+	if l1Page.lower() in DIRECTORIES[1]:
+		return render_template('/' + l0Page + '/' + l1Page + '/index.html')
+	return render_template('/' + l0Page + '/' + l1Page + '.html' if l0Page != 'static' else '')
 
-@app.route('/related')
-def related():
-	return render_template("/related/index.html")
-
-@app.route('/related/labs')
-def labs():
-	return render_template("/related/labs/index.html")
-
-@app.route('/related/clubs')
-def clubs():
-	return render_template("/related/clubs/index.html")
-
-@app.route('/byra')
-@app.route('/BYRA')
-def byra():
-	return render_template("/BYRA/index.html")
-
-@app.route('/related/spaces')
-def spaces():
-	return render_template("/related/spaces/index.html")
-
-@app.route('/related/<clublabspace>/<filename>')
-def two_folder(clublabspace, filename):
-	return render_template("/related/" + clublabspace + "/" + filename + ".html")
+@app.route('/<regex("((?!static).)*"):l0Page>/<l1Page>/<l2Page>')
+def l2Page(l0Page, l1Page, l2Page):
+        if l0Page.lower() != l0Page or l1Page.lower() != l1Page or l2Page.lower() != l2Page:
+                return redirect('/' + l0Page.lower() + '/' + l1Page.lower() + '/' + l2Page.lower(), code=301)
+	if l2Page in DIRECTORIES[2]:
+                return render_template('/' + l0Page + '/' + l1Page + '/' + l2Page +  '/index.html')
+        return render_template('/' + l0Page + '/' + l1Page + '/' + l2Page + '.html')
 
 if __name__ == '__main__':
     app.run(debug = True)
